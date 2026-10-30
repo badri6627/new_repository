@@ -1,7 +1,110 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>my_first_github_file</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hasanali Badri | Portfolio</title>
+<meta name="description" content="Portfolio of Hasanali Badri, a student and tech enthusiast working with Python, C++ and databases.">
+<style>
+  :root {
+    --bg: #fcfcfb;
+    --ink: #1c1d1f;
+    --muted: #6b6f76;
+    --line: #e4e5e7;
+    --accent: #2b4acb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17181a;
+      --ink: #ecedee;
+      --muted: #9a9ea5;
+      --line: #2c2e32;
+      --accent: #8da2ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    font-size: 1.05rem;
+  }
+  .wrap { max-width: 42rem; margin: 0 auto; padding: 0 1.5rem; }
+  header { padding: 1.5rem 0; }
+  nav { display: flex; gap: 1.5rem; justify-content: flex-end; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  nav a { color: var(--muted); text-decoration: none; }
+  nav a:hover { color: var(--ink); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .hero { padding: 6rem 0 5rem; }
+  h1 {
+    font-size: clamp(2.6rem, 9vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.25rem;
+    font-weight: 700;
+  }
+  .tagline { font-size: 1.3rem; color: var(--muted); margin: 0; max-width: 30rem; }
+  section { padding: 3rem 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.15rem; margin: 0 0 1rem; font-weight: 650; }
+  p { margin: 0 0 1rem; max-width: 36rem; }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  li { border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 1rem; }
+  .muted { color: var(--muted); }
+  footer { padding: 3rem 0 4rem; color: var(--muted); font-size: 0.95rem; border-top: 1px solid var(--line); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
 </head>
 <body>
-    <p>this is my first github file</p>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Hasanali Badri</h1>
+    <p class="tagline">A student and tech enthusiast who likes understanding how software works.</p>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I'm a student with a strong interest in technology. I enjoy learning how programs, data and systems fit together, and I'm building my skills one project at a time.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Python</li>
+      <li>C++</li>
+      <li>Databases</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p class="muted">My first projects are in progress. They will appear here once they're ready.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Find me on GitHub: <a href="https://github.com/badri6627" target="_blank" rel="noopener">github.com/badri6627</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Hasanali Badri</div>
+</footer>
+
 </body>
+</html>

@@ -7,104 +7,172 @@
 <meta name="description" content="Portfolio of Hasanali Badri, a student and tech enthusiast working with Python, C++ and databases.">
 <style>
   :root {
-    --bg: #fcfcfb;
-    --ink: #1c1d1f;
-    --muted: #6b6f76;
-    --line: #e4e5e7;
-    --accent: #2b4acb;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #17181a;
-      --ink: #ecedee;
-      --muted: #9a9ea5;
-      --line: #2c2e32;
-      --accent: #8da2ff;
-    }
+    --base: #f4f5fb;
+    --ink: #1c2033;
+    --muted: #585e78;
+    --glass: rgba(255, 255, 255, 0.5);
+    --glass-edge: rgba(255, 255, 255, 0.95);
+    --tint: rgba(28, 32, 51, 0.07);
+    --accent: #3347c9;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg);
+    min-height: 100vh;
     color: var(--ink);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.65;
-    font-size: 1.05rem;
+    line-height: 1.6;
+    font-size: 1.02rem;
+    background:
+      radial-gradient(46rem 36rem at 6% 8%, rgba(150, 140, 255, 0.55), transparent 60%),
+      radial-gradient(44rem 34rem at 96% 22%, rgba(120, 210, 230, 0.5), transparent 60%),
+      radial-gradient(46rem 34rem at 40% 105%, rgba(255, 170, 200, 0.45), transparent 60%),
+      var(--base);
+    background-attachment: fixed;
   }
-  .wrap { max-width: 42rem; margin: 0 auto; padding: 0 1.5rem; }
-  header { padding: 1.5rem 0; }
-  nav { display: flex; gap: 1.5rem; justify-content: flex-end; }
-  a { color: var(--accent); text-underline-offset: 3px; }
-  nav a { color: var(--muted); text-decoration: none; }
-  nav a:hover { color: var(--ink); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-  .hero { padding: 6rem 0 5rem; }
+
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-edge);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 40px rgba(60, 70, 130, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    backdrop-filter: blur(18px) saturate(150%);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass { background: rgba(255, 255, 255, 0.92); }
+  }
+
+  .page {
+    max-width: 76rem;
+    margin: 0 auto;
+    padding: 1.25rem 2rem 1.5rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  nav {
+    display: flex; gap: 0.25rem;
+    width: fit-content; margin-left: auto; padding: 0.35rem;
+    border-radius: 999px;
+  }
+  nav a {
+    color: var(--muted); text-decoration: none;
+    padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.95rem;
+  }
+  nav a:hover { color: var(--ink); background: var(--tint); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .hero {
+    padding: 3rem 2.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .photo {
+    width: 9rem; height: 9rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.75rem;
+    border: 4px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(60, 70, 130, 0.25);
+  }
   h1 {
-    font-size: clamp(2.6rem, 9vw, 4.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin: 0 0 1.25rem;
-    font-weight: 700;
+    font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+    line-height: 1.04; letter-spacing: -0.03em;
+    margin: 0 0 1.25rem; font-weight: 700;
   }
-  .tagline { font-size: 1.3rem; color: var(--muted); margin: 0; max-width: 30rem; }
-  section { padding: 3rem 0; border-top: 1px solid var(--line); }
-  h2 { font-size: 1.15rem; margin: 0 0 1rem; font-weight: 650; }
-  p { margin: 0 0 1rem; max-width: 36rem; }
-  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  li { border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 1rem; }
+  .tagline { font-size: 1.25rem; color: var(--muted); margin: 0; max-width: 26rem; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 1.25rem;
+  }
+  section { padding: 1.75rem; scroll-margin-top: 1rem; }
+  h2 { font-size: 1.1rem; margin: 0 0 0.8rem; font-weight: 650; }
+  p { margin: 0 0 0.8rem; }
+  p:last-child { margin-bottom: 0; }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.55rem; }
+  li {
+    padding: 0.3rem 1rem; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--glass-edge);
+    box-shadow: 0 2px 8px rgba(60, 70, 130, 0.12);
+  }
   .muted { color: var(--muted); }
-  footer { padding: 3rem 0 4rem; color: var(--muted); font-size: 0.95rem; border-top: 1px solid var(--line); }
+  a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+  footer { text-align: center; color: var(--muted); font-size: 0.9rem; }
+
+  @media (max-width: 62rem) {
+    main { grid-template-columns: 1fr; }
+    .hero { padding: 2.5rem 2rem; }
+  }
+  @media (max-width: 40rem) {
+    .page { padding: 1rem; }
+    .cards { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    nav { margin: 0 auto; }
+  }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <nav aria-label="Main">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+<div class="page">
+  <nav class="glass" aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<main class="wrap">
-  <div class="hero">
-    <h1>Hasanali Badri</h1>
-    <p class="tagline">A student and tech enthusiast who likes understanding how software works.</p>
-  </div>
+  <main>
+    <div class="hero glass">
+      <img class="photo" src="photo.jpg" alt="Portrait of Hasanali Badri" width="600" height="600">
+      <h1>Hasanali Badri</h1>
+      <p class="tagline">A student and tech enthusiast who likes understanding how software works.</p>
+    </div>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>I'm a student with a strong interest in technology. I enjoy learning how programs, data and systems fit together, and I'm building my skills one project at a time.</p>
-  </section>
+    <div class="cards">
+      <section id="about" class="glass">
+        <h2>About</h2>
+        <p>I'm a student with a strong interest in technology. I enjoy learning how programs, data and systems fit together, and I'm building my skills one project at a time.</p>
+      </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Python</li>
-      <li>C++</li>
-      <li>Databases</li>
-    </ul>
-  </section>
+      <section id="skills" class="glass">
+        <h2>Skills</h2>
+        <ul>
+          <li>Python</li>
+          <li>C++</li>
+          <li>Databases</li>
+        </ul>
+      </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <p class="muted">My first projects are in progress. They will appear here once they're ready.</p>
-  </section>
+      <section id="projects" class="glass">
+        <h2>Projects</h2>
+        <p class="muted">My first projects are in progress. They will appear here once they're ready.</p>
+      </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Find me on GitHub: <a href="https://github.com/badri6627" target="_blank" rel="noopener">github.com/badri6627</a></p>
-  </section>
-</main>
+      <section id="contact" class="glass">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:hasanalibadri1408@gmail.com">hasanalibadri1408@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/badri6627" target="_blank" rel="noopener">github.com/badri6627</a></p>
+      </section>
+    </div>
+  </main>
 
-<footer>
-  <div class="wrap">&copy; 2026 Hasanali Badri</div>
-</footer>
+  <footer>&copy; 2026 Hasanali Badri</footer>
+</div>
 
 </body>
 </html>
